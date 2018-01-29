@@ -1,56 +1,40 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import { Layout, Menu, Breadcrumb,Button } from 'antd';
+import { Form, Icon, Input, Button, Checkbox, Card } from 'antd';
 import './App.css';
-
-const { Header, Content, Footer } = Layout;
 
 class App extends Component {
   render() {
+
+    const FormItem = Form.Item;
+
     return (
-      <div className="App">
+        <div className="App">
 
-      <Layout className="layout">
-        <Header>
-          <div className="logo" />
-            <Menu
-            theme="dark"
-            mode="horizontal"
-            defaultSelectedKeys={['2']}
-            style={{ lineHeight: '64px' }}
-            >
-              <Menu.Item key="1">nav 1</Menu.Item>
-              <Menu.Item key="2">nav 2</Menu.Item>
-              <Menu.Item key="3">nav 3</Menu.Item>
-            </Menu>
-        </Header>
-
-      <Content style={{ padding: '0 50px' }}>
-        <Breadcrumb style={{ margin: '16px 0' }}>
-          <Breadcrumb.Item>Home</Breadcrumb.Item>
-          <Breadcrumb.Item>List</Breadcrumb.Item>
-          <Breadcrumb.Item>App</Breadcrumb.Item>
-        </Breadcrumb>
-
-        <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
-
-          ได้ Content ที่สวยงามมาแว้ววว แค่ Copy ล่ะวาง !!!
-          <div>
-            <Button type="primary">Button</Button>
-          </div>
-
+            <h1>Welcome to my application</h1>
+            <Card title="Sing In" style={{ width: 300, margin: 'auto' }}>
+              <Form className="login-form">
+                <FormItem>
+                    <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
+                </FormItem>
+                <FormItem>
+                    <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="Password" />
+                </FormItem>
+                <FormItem>
+                    <Button type="primary" htmlType="submit" className="login-form-button">
+                      Sign in
+                    </Button>
+                    <a className="login-form-forgot" href="">Forgot password</a>
+                </FormItem>
+                <hr></hr>
+                <FormItem>
+                    <Button type="primary" htmlType="submit" className="login-form-button">
+                      Sign up
+                    </Button>
+                </FormItem>
+              </Form>
+            </Card>
         </div>
-
-
-
-      </Content>
-
-      <Footer style={{ textAlign: 'center' }}>
-      Ant Design ©2016 Created by Ant UED
-      </Footer>
-      </Layout>
-
-      </div>
     );
   }
 }
