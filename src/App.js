@@ -19,6 +19,8 @@ class App extends Component {
 
   handleChange(event) {
     this.setState({username: event.target.value});
+    console.log("ค่าที่พิมพ์มา" + event.target.value);
+    console.log("ค่าใน State" + this.state.username);
   }
 
   render() {
@@ -50,6 +52,7 @@ class App extends Component {
                     </Button>
                 </Form.Item>
               </Form>
+              Total is .....
             </Card>
         </div>
     );
