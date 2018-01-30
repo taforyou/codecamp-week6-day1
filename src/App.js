@@ -22,13 +22,11 @@ class App extends Component {
         <div className="App">
             <Card style={{ width: 500 }}>
                 <h1>To-do-list</h1>
-                <p>
-                  <Search
-                      placeholder="input search text"
-                      onSearch={value => console.log(value)}
-                      enterButton="Add"
-                  />
-                </p>
+                <div style={{
+                    marginBottom:'10px'
+                }}><Input addonAfter={
+                    <Button type="primary">Add</Button>
+                } /> </div>
                 <List
                 bordered
                 dataSource={data}

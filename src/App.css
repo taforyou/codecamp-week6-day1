@@ -4,6 +4,10 @@
   text-align: center;
 }
 
+.App .ant-input-group-addon{
+  padding: 0;
+}
+
 #root{
   display: flex;
   justify-content: center;
