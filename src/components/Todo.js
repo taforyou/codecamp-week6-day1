@@ -16,6 +16,16 @@ export class Todo extends Component {
 
   }
 
+  deleteListAtIndex = (index) => {
+    // ไม่ควรทำเพราะเป็นการ Render ใหม่ทั้ง State ถ้ามีเยอะก็ฉิบหายยย สิครับ
+    // this.state.listItem.splice(index, 1);
+    // this.setState({});
+
+    const result = this.state.listItem;
+    result.splice(index, 1);
+    this.setState({listItem: result});
+  }
+
   submitList = () => {
     this.setState({
       listItem: this.state.listItem.concat([this.state.inputText]),
@@ -60,8 +70,8 @@ export class Todo extends Component {
             <List
               bordered
               dataSource={this.state.listItem}
-              renderItem={item => (
-                <List.Item actions={[<a><Icon type="close-circle" style={{ fontSize: 16, color: 'rgb(255, 145, 0)' }} /></a>]}>
+              renderItem={(item,index) => (
+                <List.Item actions={[<a onClick={() => this.deleteListAtIndex(index)}><Icon type="close-circle" style={{ fontSize: 16, color: 'rgb(255, 145, 0)' }} /></a>]}>
                     {item}
                 </List.Item>
             )}
