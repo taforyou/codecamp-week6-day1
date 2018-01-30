@@ -15,16 +15,28 @@ class App extends Component {
       ];
 
     const { Header, Footer, Sider, Content } = Layout;
+    const Search = Input.Search;
     const FormItem = Form.Item;
+
     return (
         <div className="App">
             <Card style={{ width: 500 }}>
                 <h1>To-do-list</h1>
-                <p><Input placeholder="default size" /></p>
+                <p>
+                  <Search
+                      placeholder="input search text"
+                      onSearch={value => console.log(value)}
+                      enterButton="Add"
+                  />
+                </p>
                 <List
                 bordered
                 dataSource={data}
-                renderItem={item => (<List.Item>{item}</List.Item>)}
+                renderItem={item => (
+                    <List.Item actions={[<a><Icon type="close-circle" style={{ fontSize: 16, color: 'rgb(255, 145, 0)' }} /></a>]}>
+                        {item}
+                    </List.Item>
+                )}
                 />
             </Card>
         </div>
