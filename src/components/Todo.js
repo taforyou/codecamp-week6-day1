@@ -8,11 +8,25 @@ export class Todo extends Component {
     super(props);
 
     this.state = {
-      inputText : ''
+      inputText : '',
+      listItem: []
     }
 
     this.handleChangeText = this.handleChangeText.bind(this);
 
+  }
+
+  submitList = () => {
+    this.setState({
+      listItem: this.state.listItem.concat([this.state.inputText]),
+      inputText: ''
+    })
+  }
+
+  handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      this.submitList();
+    }
   }
 
   handleChangeText = (event) => {
@@ -36,7 +50,11 @@ export class Todo extends Component {
             <h1>To-do-list</h1>
 
             <div style={{ marginBottom:'10px'}}>
-              <Input addonAfter={<Button type="primary">Add</Button>} onChange={this.handleChangeText} value={this.state.inputText}/>
+              <Input
+                addonAfter={<Button type="primary" onClick={this.submitList}>Add</Button>}
+                onChange={this.handleChangeText}
+                value={this.state.inputText}
+                onKeyPress={this.handleKeyPress}/>
             </div>
 
             <List
@@ -48,7 +66,13 @@ export class Todo extends Component {
                 </List.Item>
             )}
             />
-            <h2>{this.state.inputText}</h2>
+            {
+              this.state.listItem.map((value, index) => {
+                return (
+                  <h3 key={index + value}>{value}</h3>
+                );
+              })
+            }
         </Card>
       );
     }
