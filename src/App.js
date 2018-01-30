@@ -1,78 +1,31 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import { Form, Icon, Input, Button, Checkbox, Card } from 'antd';
+
+import { Layout, Form, Input, Icon, Row, Col, Button, Card, List} from 'antd';
+
+
 import './App.css';
 
 class App extends Component {
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      username : '',
-      password : '',
-      total : ''
-    }
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleChangePassword = this.handleChangePassword.bind(this);
-    this.handleOnClick = this.handleOnClick.bind(this);
-
-  }
-
-  handleChange(event) {
-    this.setState({username: event.target.value});
-  }
-
-  handleChangePassword(event) {
-    this.setState({password: event.target.value});
-    console.log(this.state.password);
-  }
-
-  handleOnClick(event) {
-    let temp = ''
-    //temp = +this.state.username + +this.state.password;
-
-    temp = parseInt(this.state.username) + parseInt(this.state.password);
-    this.setState({total : temp});
-  }
-
   render() {
+    const data = [
+        'text 1',
+        'text 2',
+        'text 3',
+      ];
 
+    const { Header, Footer, Sider, Content } = Layout;
+    const FormItem = Form.Item;
     return (
         <div className="App">
-            <h1>Welcome to my application</h1>
-            <Card title="Sing In" style={{ width: 300, margin: 'auto' }}>
-              <Form className="login-form">
-                <Form.Item>
-                    <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                        placeholder="Username" value={this.state.username}
-                        onChange={this.handleChange}
-                     />
-                </Form.Item>
-                <Form.Item>
-                    <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                      type="password" placeholder="Password"
-                      value={this.state.password}
-                      onChange={this.handleChangePassword}
-                      />
-                </Form.Item>
-                <Form.Item>
-                    <Button type="primary" htmlType="submit" className="login-form-button"
-                      onClick={this.handleOnClick}
-                      >
-                      Sign in
-                    </Button>
-                    <a className="login-form-forgot" href="">Forgot password</a>
-                </Form.Item>
-                <hr></hr>
-                <Form.Item>
-                    <Button type="primary" htmlType="submit" className="login-form-button">
-                      Sign up
-                    </Button>
-                </Form.Item>
-              </Form>
-              Total is ..... {this.state.total}
+            <Card style={{ width: 500 }}>
+                <h1>To-do-list</h1>
+                <p><Input placeholder="default size" /></p>
+                <List
+                bordered
+                dataSource={data}
+                renderItem={item => (<List.Item>{item}</List.Item>)}
+                />
             </Card>
         </div>
     );
