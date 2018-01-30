@@ -11,6 +11,8 @@ class App extends Component {
     return (
         <div className="App">
           <Todo />
+          <Todo myColor="green"/>
+          <Todo myColor="red"/>
         </div>
     );
   }
