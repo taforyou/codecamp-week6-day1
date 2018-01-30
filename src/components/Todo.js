@@ -35,11 +35,11 @@ export class Todo extends Component {
 
   render() {
 
-    const data = [
-        'text 1',
-        'text 2',
-        'text 3',
-      ];
+    // const data = [
+    //     'text 1',
+    //     'text 2',
+    //     'text 3',
+    // ];
 
     const { Header, Footer, Sider, Content } = Layout;
     const Search = Input.Search;
@@ -58,21 +58,22 @@ export class Todo extends Component {
             </div>
 
             <List
-            bordered
-            dataSource={data}
-            renderItem={item => (
+              bordered
+              dataSource={this.state.listItem}
+              renderItem={item => (
                 <List.Item actions={[<a><Icon type="close-circle" style={{ fontSize: 16, color: 'rgb(255, 145, 0)' }} /></a>]}>
                     {item}
                 </List.Item>
             )}
             />
-            {
+            {/*
               this.state.listItem.map((value, index) => {
+                //console.log(index);
                 return (
                   <h3 key={index + value}>{value}</h3>
                 );
               })
-            }
+            */}
         </Card>
       );
     }
