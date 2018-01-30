@@ -4,6 +4,21 @@ import { Layout, Form, Input, Icon, Row, Col, Button, Card, List} from 'antd';
 
 export class Todo extends Component {
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      inputText : ''
+    }
+
+    this.handleChangeText = this.handleChangeText.bind(this);
+
+  }
+
+  handleChangeText = (event) => {
+    this.setState({inputText: event.target.value});
+  }
+
   render() {
 
     const data = [
@@ -19,11 +34,11 @@ export class Todo extends Component {
     return (
         <Card style={{ width: 500 }}>
             <h1>To-do-list</h1>
-            <div style={{
-                marginBottom:'10px'
-            }}><Input addonAfter={
-                <Button type="primary">Add</Button>
-            } /> </div>
+
+            <div style={{ marginBottom:'10px'}}>
+              <Input addonAfter={<Button type="primary">Add</Button>} onChange={this.handleChangeText} value={this.state.inputText}/>
+            </div>
+
             <List
             bordered
             dataSource={data}
@@ -33,6 +48,7 @@ export class Todo extends Component {
                 </List.Item>
             )}
             />
+            <h2>{this.state.inputText}</h2>
         </Card>
       );
     }
